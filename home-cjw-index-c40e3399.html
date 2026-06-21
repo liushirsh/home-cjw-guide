@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>彩经网 · 首页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9fc;
+      color: #1e2b3c;
+      line-height: 1.6;
+      padding: 0 1.25rem 3rem;
+    }
+
+    /* 网格背景 — 轻网格卡片感 */
+    .page-wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      box-shadow: 0 10px 30px rgba(0, 70, 70, 0.04);
+      padding: 0 1.2rem 2.8rem;
+      background-image: 
+        linear-gradient(rgba(0, 168, 150, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 168, 150, 0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ---- 顶部导航 ---- */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 0 0.8rem;
+      border-bottom: 1px solid rgba(0, 140, 125, 0.12);
+      flex-wrap: wrap;
+    }
+
+    .site-name {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      color: #006b5e;
+      background: rgba(0, 160, 140, 0.08);
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1b4b4a;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #00a896;
+      color: #004d40;
+    }
+
+    /* ---- Hero 区 ---- */
+    .hero {
+      padding: 3rem 0 2.2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #004f46;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.3px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 1.2rem;
+      color: #2d4f4c;
+      font-size: 1.08rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #d4f0ed;
+      color: #005f56;
+      padding: 0.4rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0, 130, 120, 0.05);
+    }
+
+    /* ---- 核心介绍 ---- */
+    .intro-block {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 2rem;
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(0, 100, 90, 0.04);
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(0, 160, 140, 0.15);
+    }
+
+    .intro-block h2 {
+      font-size: 1.5rem;
+      font-weight: 550;
+      color: #006b5e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intro-block h2::before {
+      content: "⊹";
+      font-size: 1.8rem;
+      color: #00a896;
+      line-height: 1;
+    }
+
+    .intro-block p {
+      margin-bottom: 0.8rem;
+      color: #1f3d3a;
+    }
+
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---- 三个场景模块（网格卡片） ---- */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2.2rem 0 2.8rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem 1.8rem;
+      box-shadow: 0 6px 16px rgba(0, 70, 60, 0.05);
+      border: 1px solid #ddeae8;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 110, 100, 0.08);
+      border-color: #b8ddd6;
+    }
+
+    .scene-card .icon-em {
+      font-size: 2.4rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.6rem;
+      color: #008b7a;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #004c42;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-card p {
+      font-size: 0.96rem;
+      color: #2b4a46;
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-card .meta-note {
+      font-size: 0.85rem;
+      color: #3e6b64;
+      background: #e7f3f1;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-top: 0.7rem;
+    }
+
+    /* ---- 常见说明 (FAQ 风格) ---- */
+    .faq-section {
+      margin: 2rem 0 1.2rem;
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      color: #006358;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-section h2::after {
+      content: "⋮⋮";
+      font-size: 1.6rem;
+      letter-spacing: 0.2rem;
+      color: #00a896;
+      opacity: 0.6;
+    }
+
+    .faq-item {
+      background: rgba(225, 241, 238, 0.3);
+      border-radius: 24px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 0.9rem;
+      border-left: 4px solid #52b9ab;
+      backdrop-filter: blur(2px);
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #00463e;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-item p {
+      color: #1b423e;
+      font-size: 0.95rem;
+      margin: 0.2rem 0 0;
+    }
+
+    .faq-item .extra-tip {
+      color: #006b5e;
+      font-size: 0.88rem;
+      display: inline-block;
+      margin-top: 0.35rem;
+      background: #d7efeb;
+      padding: 0.1rem 1rem;
+      border-radius: 60px;
+    }
+
+    /* ---- 内嵌链接（唯一「彩经网」a标签） ---- */
+    .inline-link-wrap {
+      margin: 1.8rem 0 1.2rem;
+      padding: 0.7rem 0;
+    }
+
+    .inline-link-wrap a {
+      color: #006b5e;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #52b9ab;
+      transition: background 0.1s, border-color 0.15s;
+      padding: 0 0.15rem;
+    }
+
+    .inline-link-wrap a:hover {
+      background: #d7f0eb;
+      border-bottom-color: #004d40;
+    }
+
+    /* ---- 页脚 ---- */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(0, 130, 115, 0.12);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #49726b;
+    }
+
+    .footer-note span {
+      opacity: 0.8;
+    }
+
+    /* ---- 移动端优化 ---- */
+    @media (max-width: 640px) {
+      body {
+        padding: 0 0.75rem 2.2rem;
+      }
+      .page-wrapper {
+        padding: 0 0.9rem 2rem;
+        background-size: 30px 30px;
+      }
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .intro-block {
+        padding: 1.4rem 1.2rem;
+      }
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .faq-item {
+        padding: 0.9rem 1.1rem;
+      }
+      .footer-note {
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .site-name {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <span class="site-name">彩经网</span>
+    <div class="nav-links">
+      <a href="#">介绍</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>温和的信息指引 · 彩经网</h1>
+    <p>一处围绕资讯整合与日常参考展开的站点，保持克制与清晰，不渲染夸张的承诺。我们更希望你先了解它是否适合自己。</p>
+    <span class="hero-tag">以简洁、可信为出发点</span>
+  </section>
+
+  <!-- 核心介绍 -->
+  <div class="intro-block">
+    <h2>关于彩经网</h2>
+    <p><strong>彩经网</strong>（<a href="https://home-cjw.com" style="color:#006b5e; text-decoration: underline; font-weight: 600;">彩经网</a>）是一个以整合信息与基础工具为主的个人站点。它并不提供具体的投资建议，也不鼓励盲目依赖任何单一数据源。站点的定位更接近「聚合型索引」——为你筛选一些或许有用的内容模块，但最终判断仍然取决于你自己。</p>
+    <p>内容选材上尽量保持中立，不以夸张标题或虚假数据吸引流量。如果你在寻找一个没有太多干扰、界面干净的参考入口，这里也许值得你花几分钟熟悉一下。</p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes-grid">
+    <div class="scene-card">
+      <span class="icon-em">◈</span>
+      <h3>日常浏览与对比</h3>
+      <p>当你需要快速浏览多类信息，又不想被推荐算法裹挟时，彩经网提供了一个相对静态的查阅环境。</p>
+      <span class="meta-note">适合轻量对比</span>
+    </div>
+    <div class="scene-card">
+      <span class="icon-em">◈</span>
+      <h3>学习与基础了解</h3>
+      <p>对于刚接触某些领域、希望先了解基础框架的用户，站内以条目化形式组织的内容有助于降低认知负担。</p>
+      <span class="meta-note">结构清晰</span>
+    </div>
+    <div class="scene-card">
+      <span class="icon-em">◈</span>
+      <h3>偶尔查阅的参考</h3>
+      <p>不需要频繁更新，但希望有一个固定的、值得记住的地址。彩经网不推波助澜，只是安静地陈列信息。</p>
+      <span class="meta-note">无推送干扰</span>
+    </div>
+  </div>
+
+  <!-- 常见说明（FAQ摘要） -->
+  <section class="faq-section">
+    <h2>常见说明</h2>
+
+    <div class="faq-item">
+      <strong>彩经网的信息可靠吗？</strong>
+      <p>站点力图引用可验证的来源，但不对所有信息的绝对准确性作担保。建议你交叉核对关键数据。</p>
+      <span class="extra-tip">保持理性参考</span>
+    </div>
+
+    <div class="faq-item">
+      <strong>是否需要注册或付费？</strong>
+      <p>目前彩经网所有可见内容均免费，无需登录。未来若有调整会以显著方式告知。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>为什么页面设计这么简洁？</strong>
+      <p>我们希望减少视觉噪音，让你更专注于内容本身。蓝绿色点缀只是为了适度放松。</p>
+      <span class="extra-tip">网格与卡片也是选择之一</span>
+    </div>
+
+    <div class="faq-item" style="border-left-color: #6cc8bb;">
+      <strong>这个站点适合所有人吗？</strong>
+      <p>不一定。如果你偏好高度互动、强推荐或实时行情，这里可能过于安静。它更适合希望有喘息空间的浏览者。</p>
+    </div>
+  </section>
+
+  <!-- 唯一一个带有“彩经网”文本的a标签，自然嵌入句子 -->
+  <div class="inline-link-wrap">
+    <p>如果你觉得以上介绍符合你的期待，可以直接前往 <a href="https://home-cjw.com">彩经网</a> 浏览更多内容。站点仍在缓慢迭代中，感谢你的耐心。</p>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer-note">
+    <span>彩经网 · 以可信为线索</span>
+    <span>内容方向 · 轻量导航与说明</span>
+  </footer>
+
+</div>
+</body>
+</html>
