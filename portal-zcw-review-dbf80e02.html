@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩网 · 赛事查询与数据对照</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #f5f6f8;
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e9edf2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1a2634;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 span {
+            color: #1d7a3f;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #586775;
+            max-width: 680px;
+            margin: 0 auto 1.2rem;
+        }
+
+        .hero .meta-line {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2c5f3b;
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #d6dfe9;
+        }
+
+        /* 卡片网格 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d2a38;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #edf2f8;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #3d4c5c;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.3rem;
+            color: #1d7a3f;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef3f8;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #1f5f37;
+            margin-right: 0.4rem;
+            border: 1px solid #dbe2ea;
+        }
+
+        /* 说明区 — 全宽卡片 */
+        .full-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.2rem;
+        }
+
+        .full-card h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1d2a38;
+            margin-bottom: 1rem;
+        }
+
+        .full-card p {
+            font-size: 0.95rem;
+            color: #3d4c5c;
+            margin-bottom: 0.8rem;
+        }
+
+        .full-card .highlight {
+            background: #f4f9f3;
+            border-left: 4px solid #1d7a3f;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
+        }
+
+        /* FAQ 摘要 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2rem;
+            margin-top: 0.6rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #e6ecf3;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1f2d3b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.9rem;
+            color: #556575;
+        }
+
+        .faq-a a {
+            color: #1d7a3f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-a a:hover {
+            text-decoration: underline;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5a6c7e;
+        }
+
+        .footer p {
+            margin-bottom: 0.4rem;
+        }
+
+        .footer a {
+            color: #1d7a3f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero { padding: 2rem 1.2rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 1.2rem; }
+            .full-card { padding: 1.5rem 1.2rem; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .footer { padding: 1.2rem 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero .sub { font-size: 1rem; }
+            .card h2 { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>赛事数据 · 每日对照 · <span>足彩网</span></h1>
+        <p class="sub">面向日常查询与延伸阅读的轻量资料库 —— 联赛积分、交锋记录、阵容对照，一站聚合。</p>
+        <div class="meta-line">⚡ 覆盖 30+ 主流赛事 · 更新至最近一轮</div>
+    </div>
+
+    <!-- 优势 + 场景 两栏 -->
+    <div class="grid-2">
+        <div class="card">
+            <h2>📊 信息优势</h2>
+            <ul>
+                <li>联赛积分、主客战绩、近期走势并列呈现，减少跨页切换</li>
+                <li>历史交锋与同联赛对照，辅助理解对阵脉络</li>
+                <li>数据粒度适配移动端阅读，关键指标高亮</li>
+            </ul>
+            <div style="margin-top: 1rem;">
+                <span class="tag">英超</span>
+                <span class="tag">西甲</span>
+                <span class="tag">意甲</span>
+                <span class="tag">德甲</span>
+                <span class="tag">欧冠</span>
+                <span class="tag">日职</span>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🔍 日常查询场景</h2>
+            <ul>
+                <li>赛前快速对照积分差与近况</li>
+                <li>赛后核实比分、红牌、进球时间</li>
+                <li>横向比较同轮次多个联赛结果</li>
+                <li>查看特定球队连续场次表现</li>
+                <li>延伸阅读：联赛积分规则、升降级说明</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区：使用场景 + 对照逻辑 -->
+    <div class="full-card">
+        <h2>从查询到对照：数据的日常延伸</h2>
+        <p>多数用户打开页面是为了快速核对某场比分，或者查看某支球队的积分位置。但单点信息往往不够 —— 同一轮联赛中，竞争对手的赛果、主客场的分布、近期得失球趋势，都会影响判断。</p>
+        <p><a href="https://portal-zcw.com" style="color:#1d7a3f; font-weight:600; text-decoration:none;">足彩网</a>将联赛数据按轮次、球队、时间三个维度组织，并提供交叉筛选入口。例如：查看「阿森纳」的同时，页面会自动展示同轮次其他强队的对阵与积分变化，减少手动跳转。</p>
+        <div class="highlight">
+            <strong>📌 延伸阅读示例：</strong> 在球队详情页底部，附有该联赛近五赛季的积分均值、升级/保级分数线，以及同联赛球队主场胜率排行 —— 适合需要深度参考的用户，但所有内容均基于公开数据整理，不构成任何预测。
+        </div>
+        <p style="margin-bottom:0;">页面结构以「干净对照」为原则：左列为主数据，右列为关联信息。关键数字使用浅底色区分，视觉降噪，方便扫读。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="full-card">
+        <h2>常见问题 · 摘要</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-q">数据更新频率？</div>
+                <div class="faq-a">每轮联赛结束后 30 分钟内完成比分、积分、射手榜同步。杯赛数据随阶段更新。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">如何对比两支球队的交锋记录？</div>
+                <div class="faq-a">在任意球队页面点击「VS」按钮，或使用顶部搜索框直接输入两队名称。系统会展示近 10 次正式比赛交锋数据。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">手机端显示是否完整？</div>
+                <div class="faq-a">所有表格和卡片均适配窄屏，横滑可查看扩展列。部分深度内容在桌面端阅读体验更佳。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">可以查看历史赛季数据吗？</div>
+                <div class="faq-a">目前支持最近三个完整赛季（含当前赛季）。早期数据正在逐步归档，可在 <a href="https://portal-zcw.com">足彩网</a> 顶部「归档」入口检索。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer">
+        <p>基于公开赛事数据整理，仅供个人参考。所有内容以官方发布为准。</p>
+        <p>如您需要更详细的联赛资料，可访问 <a href="https://portal-zcw.com">足彩网</a> 获取完整数据对照。</p>
+        <p style="margin-top:0.6rem; font-size:0.8rem; color:#8597a6;">© 页面展示 · 非官方数据源</p>
+    </div>
+
+</div>
+</body>
+</html>
