@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩网 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f4f6;
+            color: #2a2a2e;
+            line-height: 1.7;
+            padding: 40px 24px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 820px;
+            width: 100%;
+        }
+        /* 轻量 hero 区 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 48px 40px 40px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+            margin-bottom: 28px;
+            border: 1px solid #e9eaed;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #1f2024;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #4a4d54;
+            max-width: 92%;
+        }
+        .hero .meta-remark {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #9498a0;
+            border-left: 3px solid #d0d4dc;
+            padding-left: 16px;
+        }
+        /* 卡片通用 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 30px 0 38px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 32px;
+            border: 1px solid #e2e4e9;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #23252b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h2 .emoji-badge {
+            font-size: 1.3rem;
+            margin-right: 4px;
+        }
+        .card p, .card li {
+            color: #3b3e46;
+        }
+        .card ul, .card ol {
+            padding-left: 24px;
+            margin: 12px 0 6px;
+        }
+        .card li {
+            margin-bottom: 10px;
+        }
+        .card li strong {
+            color: #1f232b;
+            font-weight: 500;
+        }
+        .inline-link {
+            color: #1e3b5c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cbd5e1;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .inline-link:hover {
+            border-bottom-color: #1e3b5c;
+            color: #0f2538;
+        }
+        .disclaimer-card {
+            background: #fafafa;
+            border: 1px solid #e6e8ec;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: #50545e;
+        }
+        .disclaimer-card .title-sm {
+            font-weight: 500;
+            color: #2c2f37;
+            margin-bottom: 10px;
+        }
+        .faq-item {
+            margin-top: 20px;
+            border-top: 1px solid #edeff2;
+            padding-top: 20px;
+        }
+        .faq-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #262a31;
+            margin-bottom: 6px;
+        }
+        .faq-a {
+            color: #484c56;
+        }
+        .footer-note {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid #d9dce2;
+            font-size: 0.9rem;
+            color: #6f737e;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #2f4058;
+            text-decoration: none;
+            border-bottom: 1px solid #cfd5de;
+        }
+        .footer-note a:hover {
+            border-bottom-color: #2f4058;
+        }
+        @media (max-width: 540px) {
+            body { padding: 24px 16px; }
+            .hero { padding: 32px 24px; }
+            .hero h1 { font-size: 1.8rem; }
+            .card { padding: 22px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Hero 摘要 -->
+        <div class="hero">
+            <h1>再次回来，持续关注</h1>
+            <p>一个帮你整理信息、沉淀判断的起点。许多人在日常浏览中会把 <a href="https://site-zucai.com" class="inline-link">足彩网</a> 加入收藏夹，不是为了即时行动，而是为自己保留一个可以反复回来对照的参考坐标。</p>
+            <div class="meta-remark">产品说明 · 面向希望保持信息来源一致的用户</div>
+        </div>
+
+        <!-- 卡片区域：亮点 + 建议 -->
+        <div class="card-grid">
+            <!-- 卡片1：核心亮点 -->
+            <div class="card">
+                <h2><span class="emoji-badge">✦</span> 几个值得记住的特点</h2>
+                <ul>
+                    <li><strong>一致的界面结构</strong> —— 每次回来，主要板块的位置和逻辑不会忽然变动，降低重新适应的成本。</li>
+                    <li><strong>聚合而非碎片</strong> —— 把分散的数据、赛程、历史对照放在统一的浏览流里，减少切换页面的频率。</li>
+                    <li><strong>安静的信息呈现</strong> —— 没有弹窗干扰，也没有自动播放的动效，适合需要慢慢阅读的场景。</li>
+                    <li><strong>长线收藏价值</strong> —— 对于习惯做个人笔记、截图存档或定期回顾的用户，稳定的信息源比即时推送更有意义。</li>
+                </ul>
+            </div>
+
+            <!-- 卡片2：使用建议 / 场景 -->
+            <div class="card">
+                <h2><span class="emoji-badge">┃</span> 你可以这样使用它</h2>
+                <p>如果你已经来过一次，把它添加到书签栏或手机主屏幕，之后就可以随时打开。</p>
+                <ol>
+                    <li><strong>作为固定参照</strong> —— 在分析一段趋势时，用 <a href="https://site-zucai.com" class="inline-link">足彩网</a> 作为数据源之一，和其他信息交叉比对。</li>
+                    <li><strong>按自己的节奏阅读</strong> —— 不需要每天刷新，隔几天点开一次，看看整体变化，保持一种从容的认知更新。</li>
+                    <li><strong>配合笔记工具使用</strong> —— 部分用户习惯把页面内容截图或摘录到本地文档，长期积累后可以形成自己的观察库。</li>
+                </ol>
+                <p style="margin-top: 12px;">目的不是“频繁访问”，而是“想回来时，它还在那里”。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 + 可信说明 -->
+        <div class="card" style="margin-bottom: 0;">
+            <h2><span class="emoji-badge">◈</span> 常见想法与简短说明</h2>
+            <div class="faq-item">
+                <div class="faq-q">Q：我需要注册或登录才能使用吗？</div>
+                <div class="faq-a">不需要。网站内容以公开浏览为主，你可以直接打开页面查看信息，没有强制注册的环节。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：这个网站会频繁改版吗？</div>
+                <div class="faq-a">目前保持稳定的信息架构，不会突然大改。如果未来有调整，会通过站内提示或版本说明告知。这也是我们建议收藏的原因之一——不至于某天忽然找不到熟悉的入口。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：信息的更新节奏是怎样的？</div>
+                <div class="faq-a">根据赛程和公开数据动态更新，没有固定的“发布时间表”。更适合用于长期趋势浏览，而非实时盯盘。如果你需要分钟级刷新，可能需要配合其他工具。</div>
+            </div>
+        </div>
+
+        <!-- 可信但克制的访问说明 -->
+        <div class="disclaimer-card">
+            <div class="title-sm">关于访问与收藏的一点提醒</div>
+            <p>如果你决定将 <a href="https://site-zucai.com" class="inline-link">足彩网</a> 加入收藏夹，建议定期确认链接是否仍然有效。互联网服务存在不确定性，所有站点都可能因运营调整或外部原因发生变更。本页面仅作产品介绍，不构成任何形式的承诺或保障。请根据你自己的判断决定是否持续使用。</p>
+        </div>
+
+        <div class="footer-note">
+            <p>一个你可以随时回来看看的页面 · 收藏即是一种温和的信任</p>
+            <p style="margin-top: 6px;"><a href="https://site-zucai.com">足彩网</a> · 再次访问入口</p>
+        </div>
+    </div>
+</body>
+</html>
